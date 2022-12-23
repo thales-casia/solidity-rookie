@@ -9,11 +9,11 @@ const routes: Array<RouteRecordRaw> = [
     component: Home
   },
   {
-    name: 'article',
-    path: '/article:id',
-    component: () => import('@/pages/home.vue'),
+    name: 'ballot',
+    path: '/ballot',
+    component: () => import('@/pages/ballot.vue'),
     props: true,
-    meta: { title: 'article' }
+    meta: { title: 'ballot' }
   },
   {
     name: '404',
