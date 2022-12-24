@@ -33,6 +33,7 @@ const useBallot = defineStore({
      */
     isChair():boolean {
       if(this.address && this.chairperson ){
+        console.log(this.address, this.chairperson, this.address == this.chairperson)
         return (this.address.toLowerCase() == this.chairperson.toLowerCase());
       }else
         return false;
@@ -80,6 +81,18 @@ const useBallot = defineStore({
       const contract = new ethers.Contract(BALLOT.address, BALLOT.abi, provider.getSigner());
       contract.winnerName().then((res:any) => {
         console.log(res)
+      });
+    },
+    check() {
+      const contract = new ethers.Contract(BALLOT.address, BALLOT.abi, provider.getSigner());
+      contract.chairperson().then((res:string) => {
+        this.chairperson = res;
+      });
+      contract.voters(0).then(res => {
+        console.log(res);
+      });
+      contract.proposals(0).then(res => {
+        console.log(res);
       });
     }
   }

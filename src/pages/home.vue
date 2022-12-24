@@ -22,6 +22,9 @@
         <button @click="onChange">转让</button>
       </section>
     </fieldset>
+    <div>
+      <router-link to="./ballot" >转入投票页面></router-link>
+    </div>
   </div>
 </template>
 <script setup lang="ts">

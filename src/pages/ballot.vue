@@ -10,7 +10,7 @@
         </ul>
       </label>
     </fieldset>
-    <fieldset v-if="account">
+    <fieldset v-if="isChair">
       <legend>授权</legend>
       <div>
           <input v-model="userAddress" />
@@ -25,10 +25,11 @@ import { computed, onMounted, ref, watch } from 'vue';
 const store = useBallot();
 const account = computed(() => store.account);
 const userAddress = ref('');
-
+const isChair = computed(() => store.isChair);
 function onVerify(e:MouseEvent) {
   if(userAddress.value) store.giveRightToVote(userAddress.value);
 }
 onMounted(() => {
+  store.check();
 });
 </script>
